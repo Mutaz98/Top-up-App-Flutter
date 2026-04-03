@@ -53,10 +53,7 @@ flutter test
 # Run with coverage
 flutter test --coverage
 
-# View coverage report (requires lcov)
-genhtml coverage/lcov.info -o coverage/html
-open coverage/html/index.html
-```
+
 
 Test files are located in `test/features/**`.
 
