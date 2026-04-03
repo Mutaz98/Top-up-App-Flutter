@@ -1,0 +1,9 @@
+import 'package:flutter/material.dart';
+import 'package:flutter_test/flutter_test.dart';
+
+void main() {
+  testWidgets('Placeholder test — full tests in test/features/**', (WidgetTester tester) async {
+    await tester.pumpWidget(const MaterialApp(home: Scaffold()));
+    expect(find.byType(Scaffold), findsOneWidget);
+  });
+}
