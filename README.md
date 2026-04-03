@@ -24,6 +24,7 @@ A Flutter application for managing UAE phone top-up beneficiaries and executing 
 ### Prerequisites
 - Flutter SDK ≥ 3.0.0
 - Dart SDK ≥ 3.0.0
+- Flutter version 3.38.9
 
 ### Install & Run
 
