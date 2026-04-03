@@ -61,24 +61,42 @@ Test files are located in `test/features/**`.
 
 ## 🏗️ Architecture
 
-lib/
-├── core/
-│   ├── cache/          # Hive initializer & box names
-│   ├── constants/      # Business rule constants
-│   ├── errors/         # Failures & exceptions
-│   ├── network/        # HttpClient abstraction, MockHttpClient, ConnectivityService
-│   ├── theme/          # AppTheme (dark premium)
-│   ├── usecases/       # Base UseCase<T, P> interface
-│   └── widgets/        # ConnectivityBanner
-├── features/
-│   ├── user/           # User entity, bloc, repository
-│   ├── beneficiaries/  # Beneficiary entity, usecases, bloc, pages, widgets
-│   └── topup/          # TopUp entity, usecases, bloc, pages, widgets
-├── injection_container.dart   # GetIt DI setup
-├── app.dart
-└── main.dart
+The project follows **Clean Architecture** principles, organized by feature to ensure modularity, maintainability, and scalability.
 
-**Layers per feature**: `domain` → `data` → `presentation`
+### Project Structure
+
+lib/
+├── app/
+│   ├── bloc/           # Global BlocObserver for state tracking
+│   ├── di/             # GetIt dependency injection setup (injection_container.dart)
+│   ├── router/         # GoRouter declarative navigation (app_router.dart, app_routes.dart)
+│   ├── theme/          # Premium dark theme configuration (app_theme.dart)
+│   └── app.dart        # Root Application widget
+├── core/
+│   ├── cache/          # Hive local storage & box initialization (hive_initializer.dart, hive_boxes.dart)
+│   ├── constants/      # App-wide constants and business rules (app_constants.dart)
+│   ├── errors/         # Custom failures and exceptions (exceptions.dart, failures.dart)
+│   ├── network/        # API endpoints, connectivity services & HTTP clients (api_endpoints.dart, connectivity_service.dart, http_client.dart, mock_http_client.dart)
+│   ├── usecases/       # Base UseCase interface (usecase.dart)
+│   └── widgets/        # Shared presentation components (connectivity_banner.dart, custom_button.dart, custom_text_button.dart, custom_text_field.dart)
+├── features/
+│   ├── beneficiaries/  # Management of top-up recipients
+│   │   ├── data/       # Repositories & Hive/Remote datasources
+│   │   ├── domain/     # Entities, UseCases & Repository interfaces
+│   │   └── presentation/ # Bloc, Pages & Feature-specific widgets
+│   ├── topup/          # Transaction logic and payment flows
+│   └── user/           # Profile and verification management
+└── main.dart           # Application entry point
+
+### Data Flow
+
+The architecture implements a unidirectional data flow with three distinct layers per feature:
+
+1.  **Domain Layer**: The heart of the feature, containing Business Logic (UseCases), Entities, and Repository Interfaces.
+2.  **Data Layer**: Responsible for data retrieval, consisting of Repository implementations and Data Sources (Hive for local, HTTP for remote).
+3.  **Presentation Layer**: The UI layer, utilizing **BLoC** for state management and functional components for the interface.
+
+**Flow**: Presentation → UseCase (Domain) → Repository (Data) → DataSource (Remote/Local)
 
 ---
 
@@ -102,8 +120,9 @@ lib/
 
 | Package | Purpose |
 |---|---|
-| `flutter_bloc` | State management |
-| `get_it` | Dependency injection |
+| `flutter_bloc` | State management (v9.1.1+) |
+| `go_router` | Declarative routing (v17.2.0+) |
+| `get_it` | Dependency injection (v9.2.1+) |
 | `dartz` | Functional error handling (`Either`) |
 | `hive_flutter` | Offline local storage |
 | `connectivity_plus` | Network status monitoring |
