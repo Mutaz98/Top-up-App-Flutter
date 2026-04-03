@@ -61,7 +61,6 @@ Test files are located in `test/features/**`.
 
 ## 🏗️ Architecture
 
-```
 lib/
 ├── core/
 │   ├── cache/          # Hive initializer & box names
@@ -78,7 +77,6 @@ lib/
 ├── injection_container.dart   # GetIt DI setup
 ├── app.dart
 └── main.dart
-```
 
 **Layers per feature**: `domain` → `data` → `presentation`
 
@@ -96,7 +94,7 @@ lib/
 
 5. **Error Rollback** — Adding/deleting beneficiaries uses an optimistic local write. If the remote call subsequently fails, the UI shows an error but does not automatically rollback the local state (acceptable for a mock backend).
 
-6. **UAE Phone Validation** — Accepts numbers in the format `+971 5X XXXXXXX` or `05X XXXXXXX`.
+6. **UAE Phone Validation** — Accepts numbers in the format `+971 5X XXXXXXX`.
 
 ---
 
