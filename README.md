@@ -96,7 +96,7 @@ lib/
 
 5. **Error Rollback** — Adding/deleting beneficiaries uses an optimistic local write. If the remote call subsequently fails, the UI shows an error but does not automatically rollback the local state (acceptable for a mock backend).
 
-6. **UAE Phone Validation** — Accepts numbers in the format `+971 5X XXXXXXX` or `05X XXXXXXX`.
+6. **UAE Phone Validation** — Accepts numbers in the format `+971 5X XXXXXXX`.
 
 ---
 
