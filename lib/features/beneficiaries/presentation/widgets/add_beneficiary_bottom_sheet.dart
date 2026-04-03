@@ -128,7 +128,7 @@ class _AddBeneficiaryBottomSheetState extends State<AddBeneficiaryBottomSheet> {
                       FilteringTextInputFormatter.allow(RegExp(r'[0-9+]'))
                     ],
                     labelText: 'UAE Phone Number',
-                    hintText: '+9710000000000',
+                    hintText: '+971 5X XXXXXXX',
                     prefixIcon: const Icon(Icons.phone_outlined,
                         color: AppColors.primary),
                     validator: (v) {
@@ -137,7 +137,7 @@ class _AddBeneficiaryBottomSheetState extends State<AddBeneficiaryBottomSheet> {
                       }
                       final regex = RegExp(r'^(\+971|0)(5[0-9])\d{7}$');
                       if (!regex.hasMatch(v)) {
-                        return 'Enter a valid UAE number (e.g. +9710000000000)';
+                        return 'Enter a valid UAE number (e.g. +971 5X XXXXXXX)';
                       }
                       return null;
                     },
