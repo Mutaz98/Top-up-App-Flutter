@@ -30,7 +30,7 @@ A Flutter application for managing UAE phone top-up beneficiaries and executing 
 
 ```bash
 # Clone the repository
-git clone https://github.com/Mutaz98/Top-up-App--Flutter.git
+git clone https://github.com/Mutaz98/Top-up-App-Flutter.git
 cd topup
 
 # Install dependencies
